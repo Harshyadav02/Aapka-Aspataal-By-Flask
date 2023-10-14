@@ -1,0 +1,111 @@
+/* Reset some default browser styles */
+body, h1, table {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Background color for the entire page */
+    padding: 50px;
+}
+
+h1 {
+    background-color: rgb(17,17,17); /* Background color for the header */
+    color: white; /* Text color for the header */
+    padding: 10px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white; /* Background color for the table */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for the table */
+}
+
+thead th {
+    background-color: rgb(17, 17, 17); /* Background color for table header cells */
+    color: white; /* Text color for table header cells */
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Background color for even rows */
+}
+
+tbody td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Bottom border for table cells */
+}
+
+/* Add more CSS rules as needed to customize the appearance of your page */
+
+
+
+/* Styling for the entire registration form container */
+#registration {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+}
+
+/* Style for form labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style for form input fields */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style for the register button */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* Style for the pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color:rgb(27, 27, 27);
+    color: white;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: rgb(27, 27, 27);
+}
+
+.pagination .disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}

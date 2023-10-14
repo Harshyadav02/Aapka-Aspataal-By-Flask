@@ -1,0 +1,129 @@
+/* Style for flashed error messages */
+body{
+    background-color: #e6bcbc;
+
+}
+.cssfordiv{
+    text-align: center;
+}
+h1{
+    
+    text-align: center;
+   font-size: 80px;
+   color: white;
+}
+.flash {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+/* Style for flashed success messages */
+.flash-success {
+    background-color: #4CAF50;
+}
+
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+
+ /* Common button styles */
+ .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; 
+    background-color: #e6bcbc;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Button 1: Default Button */
+.button-default {
+    background-color: #3498db;
+    color: #fff;
+}
+
+/* Button 2: Primary Button */
+.button-primary {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+/* Button 3: Success Button */
+.button-success {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+/* Button 4: Warning Button */
+.button-warning {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+/* Button 5: Danger Button */
+.button-danger {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+/* Hover effect */
+.button:hover {
+    background-color: #555;
+}
+
+ /* Button styles for actions */
+ .button-add {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.button-update {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.button-delete {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.button-read {
+    background-color: #9b59b6;
+    color: #fff;
+}
+
+.button-truncate {
+    background-color: #f39c12;
+    color: #fff;
+}
+
+/* Hover effect */
+.button:hover {
+    background-color: #555;
+}
+
+.button-go-back {
+    background-color: #34495e;
+    color: #fff;
+}
+.button {
+    /* ... (other styles) */
+    width: 45%; /* Adjust the width to fit two buttons in a row with some spacing */
+}

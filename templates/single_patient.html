@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information</title>
+    <style>
+      body {
+       font-family: Arial, sans-serif;
+       background-color: #f0f0f0;
+       margin: 0;
+       padding: 0;
+     }
+
+     .container {
+       max-width: 800px;
+       margin: 0 auto;
+       padding: 20px;
+     }
+
+     .patient-info {
+       border: 1px solid #ccc;
+       background-color: #fff;
+       padding: 20px;
+       margin: 20px 0;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     }
+
+     .field {
+       display: flex;
+       justify-content: space-between;
+       margin-bottom: 10px;
+     }
+
+     .field span {
+       font-weight: bold;
+       width: 45%;
+     }
+
+     .field span:last-child {
+       width: 50%;
+     }
+
+     form {
+       background-color: #fff;
+       padding: 10px;
+       margin-bottom: 20px;
+       border: 1px solid #ccc;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     }
+
+     label {
+       font-weight: bold;
+     }
+
+     input[type="text"] {
+       width: 70%;
+       padding: 5px;
+       border: 1px solid #ccc;
+       border-radius: 3px;
+     }
+
+     .editButton {
+       display: none;
+       padding: 6px 12px;
+       background-color: #007bff;
+       color: #fff;
+       text-decoration: none;
+       border-radius: 3px;
+     }
+
+     .editButton:hover {
+       background-color: #0056b3;
+     }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <form id="patientSearchForm" action="/single_patient/" method="post">
+            <label for="patientId">Patient ID:</label>
+            <input type="text" id="patientId" name="patient_id" placeholder="3001">
+            <button id="searchButton" type="submit">Search</button>
+            {% for msg in get_flashed_messages() %}
+            <div>{{ msg }}</div>
+        {% endfor %}
+        </form>
+
+        {% if patient %}
+            <div class="patient-info">
+                <div class="field">
+                    <span>Patient ID:</span>
+                    <span>{{patient.Patient_id}}</span>
+                </div>
+                <div class="field">
+                    <span>First Name:</span>
+                    <span id="firstName">{{patient.First_name}}</span>
+
+                </div>
+                <div class="field">
+                  <span>Last Name:</span>
+                  <span class="editable">{{patient.Last_name}}</span>
+                  <input type="text" id="editLastName" name="editLastName" style="display: none;" value="{{patient.Last_name}}">
+                </div>
+                <div class="field">
+                  <span>Gender:</span>
+                  <span class="editable">{{patient.Gender}}</span>
+                  <input type="text" id="editGender" name="editGender" style="display: none;" value="{{patient.Gender}}">
+                </div>
+                <div class="field">
+                  <span>State:</span>
+                  <span class="editable">{{patient.State}}</span>
+                  <input type="text" id="editState" name="editState" style="display: none;" value="{{patient.State}}">
+                </div>
+                <div class="field">
+                  <span>Age:</span>
+                  <span class="editable">{{patient.Age}}</span>
+                  <input type="text" id="editAge" name="editAge" style="display: none;" value="{{patient.Age}}">
+                </div>
+                <div class="field">
+                  <span>Contact:</span>
+                  <span class="editable">{{patient.contact}}</span>
+                  <input type="text" id="editcontact" name="editcontact" style="display: none;" value="{{patient.contact}}">
+                </div>
+                <div class="field">
+                  <span>Street:</span>
+                  <span>{{patient.Street}}</span>
+                  <input type="text" id="editStreet" name="editStreet" style="display: none;" value="{{patient.Street}}">
+                </div>
+                <div class="field">
+                  <span>City:</span>
+                  <span class="editable">{{patient.City}}</span>
+                  <input type="text" id="editCity" name="editCity" style="display: none;" value="{{patient.City}}">
+                </div>
+                <div class="field">
+                  <span>Postal Code:</span>
+                  <span class="editable">{{patient.Postal_code}}</span>
+                  <input type="text" id="editPostal_code" name="editPostal_code" style="display: none;" value="{{patient.Postal_code}}">
+                </div>
+                <div class="field">
+                  <span>Doctor ID:</span>
+                  <span class="editable">{{patient.Doctor_id}}</span>
+                  <input type="text" id="editDoctor_id" name="editDoctor_id" style="display: none;" value="{{patient.Doctor_id}}">
+                </div>
+                <div class="field">
+                  <span>Ward ID:</span>
+                  <span class="editable">{{patient.Ward_id}}</span>
+                  <input type="text" id="editWard_id" name="editWard_id" style="display: none;" value="{{patient.Ward_id}}">
+                </div>
+                <div class="field">
+                  <span>Attendant ID:</span>
+                  <span class="editable">{{patient.Attende_id}}</span>
+                  <input type="text" id="editAttende_id" name="editAttende_id" style="display: none;" value="{{patient.Attende_id}}">
+                </div>
+               
+            </div>
+            
+            <!-- Edit Form (Initially hidden) -->
+            <form id="editPatientForm" action="/single_update_patient/" method="post" style="display: none;">
+              <input type="hidden" name="patient_id" value="{{patient.Patient_id}}">
+              <div class="field">
+                  <label for="editFirstName">First Name:</label>
+                  <input type="text" id="editFirstName" name="editFirstName" value="{{patient.First_name}}">
+              </div>
+              <div class="field">
+                  <label for="editLastName">Last Name:</label>
+                  <input type="text" id="editLastName" name="editLastName" value="{{patient.Last_name}}">
+              </div>
+              <div class="field">
+                  <label for="editGender">Gender:</label>
+                  <input type="text" id="editGender" name="editGender" value="{{patient.Gender}}">
+              </div>
+              <div class="field">
+                  <label for="editState">State:</label>
+                  <input type="text" id="editState" name="editState" value="{{patient.State}}">
+              </div>
+              <div class="field">
+                  <label for="editAge">Age:</label>
+                  <input type="text" id="editAge" name="editAge" value="{{patient.Age}}">
+              </div>
+              <div class="field">
+                <label for="editContact">Contact:</label>
+                <input type="text" id="editContact" name="editContact" value="{{patient.contact}}">
+            </div>
+            
+            <div class="field">
+                <label for="editStreet">Street:</label>
+                <input type="text" id="editStreet" name="editStreet" value="{{patient.Street}}">
+            </div>
+            
+            <div class="field">
+                <label for="editCity">City:</label>
+                <input type="text" id="editCity" name="editCity" value="{{patient.City}}">
+            </div>
+            
+            <div class="field">
+                <label for="editPostalCode">Postal Code:</label>
+                <input type="text" id="editPostalCode" name="editPostalCode" value="{{patient.Postal_code}}">
+            </div>
+            
+            <div class="field">
+                <label for="editDoctorId">Doctor ID:</label>
+                <input type="text" id="editDoctorId" name="editDoctorId" value="{{patient.Doctor_id}}">
+            </div>
+            
+            <div class="field">
+                <label for="editWardId">Ward ID:</label>
+                <input type="text" id="editWardId" name="editWardId" value="{{patient.Ward_id}}">
+            </div>
+            
+            <div class="field">
+                <label for="editAttendantId">Attendant ID:</label>
+                <input type="text" id="editAttendantId" name="editAttendantId" value="{{patient.Attende_id}}">
+            </div>
+              <button type="submit">Update</button>
+          </form>
+
+            <button id="editButton">Edit</button>
+           
+        {% endif %}
+    </div>
+
+    <script>
+      const editButton = document.getElementById('editButton');
+      const editForm = document.getElementById('editPatientForm');
+    
+      editButton.addEventListener('click', () => {
+          editButton.style.display = 'none';
+          editForm.style.display = 'block';
+    
+          // Show the input field for First Name and hide the span
+          document.getElementById('firstName').style.display = 'none';
+          document.getElementById('editFirstName').style.display = 'block';
+    
+          // Repeat this for other fields (Last Name, Gender, State, Age, Contact, etc.)
+    
+          document.getElementById('lastName').style.display = 'none';
+          document.getElementById('editLastName').style.display = 'block';
+    
+          document.getElementById('gender').style.display = 'none';
+          document.getElementById('editGender').style.display = 'block';
+    
+          document.getElementById('state').style.display = 'none';
+          document.getElementById('editState').style.display = 'block';
+    
+          document.getElementById('age').style.display = 'none';
+          document.getElementById('editAge').style.display = 'block';
+    
+          document.getElementById('contact').style.display = 'none';
+          document.getElementById('editContact').style.display = 'block';
+      });
+    </script>
+    
+</body>
+</html>

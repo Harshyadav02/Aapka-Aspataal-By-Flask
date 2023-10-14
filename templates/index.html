@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}DASHBOARD{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static' , filename = 'style.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <style>
+        /* Custom CSS to change navbar color to blue */
+        .navbar-blue {
+            background-color: #007bff;
+            /* Use the desired shade of blue */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-blue navbar-light p-lg-3">
+        <a class="navbar-brand text-white" href="#">आपका अस्पताल</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{ url_for('blue_print.patient_section') }}" class="nav-link text-white">Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('doctor_blueprint.doctor_section') }}" class="nav-link text-white">Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('medicine_blue_print.medecine_section') }}" class="nav-link text-white">Medicine</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('ward_blueprint.ward_section') }}" class="nav-link text-white">Ward</a>
+                </li>
+                <li class "nav-item">
+                    <a href="{{ url_for('bill_blueprint.bill_section') }}" class="nav-link text-white">Bill</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{{ url_for('auth.login') }}" class="nav-link text-white">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('auth.register') }}" class="nav-link text-white">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+
+
+    <div class="container mt-4 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <!-- Use Bootstrap row and columns to display images in a horizontal layout -->
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="border p-3 text-center">
+                    <img src="{{ url_for('static', filename='images/admin.png') }}" class="img-fluid" alt="Admin Image">
+                    <a href="{{ url_for('auth.login') }}">
+                        <button type="button" class="btn btn-primary my-2 px-4 py-2">Admin</button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="border p-3 text-center">
+                    <img src="{{ url_for('static', filename='images/patient.jpg') }}" class="img-fluid" alt="Patient Image">
+                    <a href="{{ url_for('blue_print.patient_section') }}">
+                        <button type="button" class="btn btn-primary my-2 px-4 py-2">Patient</button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="border p-3 text-center">
+                    <img src="{{ url_for('static', filename='images/doctor.png') }}" class="img-fluid" alt="Doctor Image" style="height: 317px;">
+                    <a href="{{ url_for('doctor_blueprint.doctor_section') }}">
+                        <button type="button" class="btn btn-primary my-2 px-4 py-2">Doctor</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            {% block content %}{% endblock content %}
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

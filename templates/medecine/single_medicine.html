@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .patient-info {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .field {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .field span {
+            font-weight: bold;
+            width: 45%;
+        }
+
+        .field span:last-child {
+            width: 50%;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="patientSearchForm" action="/single_medicine/" method="post">
+            <label for="Medecine_Id">Medecine ID:</label>
+            <input type="text" id="Medecine_Id" name="medicine_id" maxlength="30" placeholder="MED001">
+            
+        </form>
+        {% if Medecine %}
+        
+        <div class="Medecine-info">
+            <div class="field">
+                <span>Medicine ID:</span>
+                <span>{{Medecine.Medicine_id}}</span>
+            </div>
+            <div class="field">
+                <span>Drug Name:</span>
+                <span>{{Medecine.Drug_name}}</span>
+            </div>
+            <div class="field">
+                <span>Drug Company:</span>
+                <span>{{Medecine.Drug_company}}</span>
+            </div>
+            <div class="field">
+                <span>Dosage:</span>
+                <span>{{Medecine.Dosage}}</span>
+            </div>
+            <div class="field">
+                <span>Medicine Description:</span>
+                <span>{{Medecine.Med_description}}</span>
+            </div>
+            <div class="field">
+                <span>Cost:</span>
+                <span>{{Medecine.cost}}</span>
+            </div>
+        </div>
+        
+            
+            {% else %}
+        {% for msg in get_flashed_messages()%}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+        {%endif%}
+        
+        </div>
+       
+        
+    </div>
+</body>
+</html>
+
+
+
+
+

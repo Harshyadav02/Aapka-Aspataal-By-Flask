@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine Management</title>
+    <!-- Add your CSS stylesheets here -->
+    <style>
+        /* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Medicine Management</h1>
+
+    <div class="container">
+        <h2>Add Medicine</h2>
+        <form method="POST" action="{{ url_for('medecine_blue_print.add_medecine') }}">
+            <label for="medecine_id">Medicine ID:</label>
+            <input type="text" name="medecine_id" required placeholder="MED001" maxlength="30"><br><br>
+
+            <label for="drug_name">Drug Name:</label>
+            <input type="text" name="drug_name" required placeholder="Aspirin"  maxlength="50"><br><br>
+
+            <label for="drug_company">Drug Company:</label>
+            <input type="text" name="drug_company" required placeholder="PharmaCorp" maxlength="30"><br><br>
+
+            <label for="dosage">Dosage:</label>
+            <input type="text" name="dosage" required placeholder="100mg" maxlength="30"><br><br>
+
+            <label for="Med_description">Medicine Description:</label>
+            <textarea name="Med_description" rows="4" cols="50" required placeholder="Pain reliever" maxlength="40"></textarea><br><br>
+
+            <label for="cost">Medicine Cost:</label>
+            <input type="number" name="cost" required placeholder="100" maxlength="2147483647"><br><br>
+
+            <input type="submit" value="Add Medicine">
+
+
+
+            {% for msg in get_flashed_messages()%}
+            <div>
+                {{msg}}
+            </div>
+        {%endfor%}
+        </form>
+    </div>
+
+
+
+</body>
+</html>

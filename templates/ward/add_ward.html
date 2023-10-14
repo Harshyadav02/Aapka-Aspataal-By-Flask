@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Ward</title>
+    <style>
+        /* Reset some default browser styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Background and font styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #007bff;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Fancy form field animations */
+.form-group {
+    position: relative;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    background-color: transparent;
+}
+
+.form-group input[type="text"] + label,
+.form-group input[type="number"] + label {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    opacity: 0.5;
+    transition: top 0.3s, font-size 0.3s, opacity 0.3s;
+}
+
+.form-group input[type="text"]:focus + label,
+.form-group input[type="number"]:focus + label {
+    top: 0;
+    font-size: 12px;
+    opacity: 1;
+    color: #007bff;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Ward</h1>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="Ward_id">Ward ID:</label>
+                <input type="text" id="Ward_id" name="Ward_id" required >
+            </div>
+            <div class="form-group">
+                <label for="Ward_type">Ward Type:</label>
+                <input type="text" id="Ward_type" name="Ward_type" required maxlength="30">
+            </div>
+            <div class="form-group">
+                <label for="ward_charge">Ward Charge:</label>
+                <input type="number" id="ward_charge" name="ward_charge" required>
+            </div>
+            <button type="submit" class="btn">Add Ward</button>
+            
+            {% for msg in get_flashed_messages()%}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+        
+        </div>
+        </form>
+    </div>
+</body>
+</html>

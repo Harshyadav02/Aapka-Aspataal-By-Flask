@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'style.css')}}">
+</head>
+<body>
+    <h1>bill Section</h1>
+    <div class="button-container">
+       
+        <div>
+            <!-- Add Button -->
+            <a href="{{url_for('bill_blueprint.add_bill' )}}" class="button button-add">Add</a>
+    
+            <!-- Update Button -->
+            <a href="{{url_for('bill_blueprint.update_bill')}}" class="button button-update">Update</a>
+        </div>
+    
+        <div>
+            <!-- Delete Button -->
+            <a href="{{url_for('bill_blueprint.delete_bill')}}" class="button button-delete">Delete</a>
+    
+            <!-- Read Button -->
+            <a href="{{ url_for('bill_blueprint.single_bill') }}" class="button button-read">See Onebill</a>
+        </div>
+    
+        <div>
+            <a href="{{url_for('auth.logout')}}" class="button button-go-back">Logout</a>
+
+        </div>
+    </div>
+    
+</body>
+</html>

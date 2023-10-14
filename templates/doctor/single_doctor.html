@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .patient-info {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .field {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .field span {
+            font-weight: bold;
+            width: 45%;
+        }
+
+        .field span:last-child {
+            width: 50%;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="patientSearchForm" action="/single_doctor/" method="post">
+            <label for="doctorId">Doctor ID:</label>
+            <input type="text" id="doctorId" name="doctor_id">
+            
+        </form>
+        {% if doctor %}
+        
+        <div class="doctor-info">
+            <div class="field">
+                <span>Doctor ID:</span>
+                <span>{{doctor.Doctor_id}}</span>
+            </div>
+            <div class="field">
+                <span>First Name:</span>
+                <span>{{doctor.First_name}}</span>
+            </div>
+            <div class="field">
+                <span>Last Name:</span>
+                <span>{{doctor.Last_name}}</span>
+            </div>
+            <div class="field">
+                <span>Gender:</span>
+                <span>{{doctor.Gender}}</span>
+            </div>
+            <div class="field">
+                <span>Contact:</span>
+                <span>{{doctor.contact}}</span>
+            </div>
+            <div class="field">
+                <span>Doctor Charge</span>
+                <span>{{doctor.Doctor_Charge}}</span>
+            </div>
+            <div class="field">
+                <span>Specialty Id</span>
+                <span>{{doctor.Specialty_id}}</span>
+            </div>
+            {% if doctor_specililty %}    
+            <div class="field">
+                <span>Specialty:</span>
+                <span>{{ doctor_specililty.Specialty_name }}</span>
+            </div>
+            
+            {% else %}
+        {% for msg in get_flashed_messages()%}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+        {%endif%}
+        {%endif%}
+        </div>
+       
+        
+    </div>
+</body>
+</html>
+
+
+
+
+

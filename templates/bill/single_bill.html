@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>View Bill</h1>
+        <div class="form-container">
+            <form method="POST">
+                <label for="bill_id">Enter Bill ID:</label>
+                <input type="text" id="bill_id" name="bill_id" required>
+                <button type="submit">View Bill</button>
+            </form>
+            <div class="error">
+                {% if error %}
+                    {{ error }}
+                {% endif %}
+            </div>
+        </div>
+        {% if bill %}
+            <div class="bill-info">
+                <h2>Bill Information</h2>
+                <p><strong>Bill ID:</strong> {{ bill.Bill_id }}</p>
+                <p><strong>Patient ID:</strong> {{ bill.Patient_id }}</p>
+                <p><strong>Doctor ID:</strong> {{ bill.Doctor_id }}</p>
+                <p><strong>Medical ID:</strong> {{ bill.Medical_id }}</p>
+                <p><strong>Total Amount:</strong> {{ bill.Total_amount }}</p>
+                <p><strong>Admit ID:</strong> {{ bill.Admit_id }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

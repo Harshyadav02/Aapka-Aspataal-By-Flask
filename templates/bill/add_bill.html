@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bill</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='patient.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Bill</h1>
+        <form method="POST">
+            <label for="bill_id">Bill ID:</label>
+            <input type="text" id="bill_id" name="Bill_id" required>
+            <label for="patient_id">Patient ID:</label>
+            <input type="text" id="patient_id" name="Patient_id" required>
+            <label for="doctor_id">Doctor ID:</label>
+            <input type="text" id="doctor_id" name="Doctor_id" required>
+            <label for="medical_id">Medical ID:</label>
+            <input type="text" id="medical_id" name="Medical_id" >
+            <label for="total_amount">Total Amount:</label>
+            <input type="text" id="total_amount" name="Total_amount" required>
+            <label for="admit_id">Admit ID:</label>
+            <input type="text" id="admit_id" name="Admit_id" >
+            <button type="submit">Add Bill</button>
+            {% for msg in get_flashed_messages()%}
+        <div>
+            {{msg}}
+        </div>
+    {%endfor%}
+        </form>
+        
+    </div>
+</body>
+</html>

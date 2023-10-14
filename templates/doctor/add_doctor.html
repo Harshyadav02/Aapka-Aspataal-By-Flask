@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doctor Information Form</title>
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'patient.css')}} ">
+</head>
+<body>
+    <h1>Doctor Information Form</h1>
+    <form action="/add_doctor/" method="POST">
+ 
+        <lable id="Doctor_id">Doctor Id</lable>
+        <input type="text" name="doctor_id" id="Doctor_id">
+
+        <lable>First Name</lable>
+        <input type="text" name="First_name" id="">
+
+        <lable>Last Name</lable>
+        <input type="text" name="Last_name" id="">
+
+        <lable>Gender</lable>
+        <input type="text" name="Gender" id="">
+
+        <lable>contact</lable>
+        <input type="text" name="contact" id="">
+
+        <lable>Doctor Charge</lable>
+        <input type="text" name="Doctor_Charge" id="">
+
+        <lable>Specialty Id</lable>
+        <input type="text" name="Specialty_id" id="">
+
+        <!-- <lable></lable> 
+        <input type="text" name="" id=""> -->
+        
+        <input type="submit" value="Submit" >
+        
+            {% for error in get_flashed_messages()%}
+                <div>
+                    {{error}}
+                </div>
+            {%endfor%}
+        
+    </form>
+    
+</body>
+</html>

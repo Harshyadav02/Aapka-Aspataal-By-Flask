@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ward Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .ward-info {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .field {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .field span {
+            font-weight: bold;
+            width: 45%;
+        }
+
+        .field span:last-child {
+            width: 50%;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="wardSearchForm" action="/single_ward/" method="post">
+            <label for="ward_id">ward ID:</label>
+            <input type="text" id="ward_id" name="ward_id">
+            
+        </form>
+        {% if ward %}
+        
+        <div class="ward-info">
+            <div class="field">
+                <span>Ward ID:</span>
+                <span>{{ward.Ward_id}}</span>
+            </div>
+            <div class="field">
+                <span>Ward Type:</span>
+                <span>{{ward.Ward_type }}</span>
+            </div>
+            <div class="field">
+                <span>Ward charge:</span>
+                <span>{{ward.ward_charge}}</span>
+            </div>
+            
+        </div>
+            {% else %}
+        {% for msg in get_flashed_messages()%}
+            <div>
+                {{ msg }}
+            </div>
+        {% endfor %}
+        {%endif%}
+        </div>
+       
+        
+    </div>
+</body>
+</html>
+
+
+
+
+

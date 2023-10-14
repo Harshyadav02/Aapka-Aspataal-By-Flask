@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Update Doctor Details</title>
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'patient.css')}} ">
+
+</head>
+
+<body>
+    
+    <h1>Update Doctor Details</h1>
+    {% if doctor %}
+    <form method="POST" action="/update_doctor/{{ doctor }}">
+        
+        <h2>Editing the Doctor having Doctor id :{{doctor}}</h2>
+        <label for="to_update">Select field to update:</label>
+        <select name="to_update" id="to_update" required>
+            <option value="">Choose field</option>
+            <option value="First_name">First_name </option>
+            <option value="Last_name">Last_name </option>
+            <option value="Age">Gender <option>
+            <option value="Contact">contact <option>
+             <option value="Doctor_id">Doctor_Charge </option>
+        </select>
+          <br>
+        <label for="update_value">New Value:</label>
+        <input type="text" name="update_value" id="update_value" required /><br />
+        <input type="submit" value="Update" />
+
+        
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        {% for message in messages %}
+       <div>
+            
+            {{ message }}
+            
+        </div>{% endfor %}
+        {% endif %} {% endwith %}
+    </form>
+    {% endif %}
+
+</body>
+
+</html>

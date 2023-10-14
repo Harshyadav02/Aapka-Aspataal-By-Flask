@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Delete Patient Details</title>
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'patient.css')}} ">
+
+</head>
+
+<body>
+    <h1>Delete Patient Details</h1>
+    
+
+    <form method="POST" action="/delete_patient/">
+        <label for="patient_id">Patient ID:</label>
+        <input  name="patient_id" id="patient_id" required placeholder="3001"/><br />
+
+        <input type="submit" value="Delete" />
+        {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+        {% for message in get_flashed_messages() %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+    </form>
+
+</body>
+
+</html>

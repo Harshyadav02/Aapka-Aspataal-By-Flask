@@ -110,7 +110,7 @@ def all_doctor_detail():
 	doctor_query = session.query(Doctor)
 	total_doctor = doctor_query.count()
 
-	doctors = doctor_query.limit(per_page).offset((page - 1) * per_page).all()
+	doctors = doctor_query.all()
 
 	session.close()
 

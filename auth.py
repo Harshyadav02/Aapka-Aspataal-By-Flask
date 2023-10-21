@@ -78,12 +78,14 @@ def login():
 
 @auth_blue_print.route('/admin-dashboard/<user>')
 def admin_dashboard(user):
+	page = request.args.get('page', default=1, type=int)
+	# fetching the user from database
 	username = session.query(Admin).filter_by(username=user).first()
 	if username is None:
 		
 		return 'user not found '
 	else:
-		return render_template('admin_dash.html' ,user = user)
+		return render_template('admin_dash.html' ,user = user , page = page)
 
 
 @auth_blue_print.route('/logout/')

@@ -81,8 +81,7 @@ def delete_medecine(medicine_id):
 @medicine_blue_print.route("/all_medicine_detail/")
 @login_required
 def all_medicine_detail():
-	page = request.args.get('page', default=1, type=int)
-	per_page = 4
+	
 
 	# fetching the medecine table
 	medicine = Base.classes.Medecine
@@ -91,11 +90,11 @@ def all_medicine_detail():
 	medicine_list = session.query(medicine)
 	total_medicine = medicine_list.count()
 
-	medicine = medicine_list.limit(per_page).offset((page - 1) * per_page).all()
+	medicine = medicine_list.all()
 
 	session.close()
 	# rendering the Patient data to html page
-	return render_template('medecine/medicine_list.html', medicines=medicine ,  page=page, per_page=per_page, total_medicine=total_medicine)
+	return render_template('medecine/medicine_list.html', medicines=medicine ,  total_medicine=total_medicine)
 
 @medicine_blue_print.route('/update_medecine/<medicine_id>' , methods=['POST' ,'GET'])
 @login_required

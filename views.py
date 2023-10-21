@@ -1,5 +1,5 @@
 from db import session , Base
-from flask import jsonify, render_template , Blueprint , request , render_template , flash ,redirect , url_for  
+from flask import  render_template , Blueprint , request , render_template , flash ,redirect , url_for  
 from sqlalchemy.exc import IntegrityError
 from utils import login_required
 import sqlalchemy
@@ -183,13 +183,16 @@ def add_patient():
 
 #     return render_template('single_patient.html')
 
+def search_patient(user):
+	user = session.query()
+
 @blue_print.route('/all_patients_detail/')
 @login_required
 
 def all_patient_detail():
-    page = request.args.get('page', default=1, type=int)
-    per_page = 4
-
+    # page = request.args.get('page', default=1, type=int)
+    # per_page = 4
+	
     Patient = Base.classes.Patient  # Get the mapped Patient class
 
 	# retriving all the data from db
@@ -199,11 +202,11 @@ def all_patient_detail():
     total_patients = patients_query.count()
 
 	# limiting the number of patients per page  and the offset is used to skip the data 
-    patients = patients_query.limit(per_page).offset((page - 1) * per_page).all()
-
+    patients = patients_query.all()
+	# patients=patients, page=page, per_page=per_page
     session.close()
 
-    return render_template('patient_list.html', patients=patients, page=page, per_page=per_page, total_patients=total_patients)
+    return render_template('patient_list.html',  total_patients=total_patients , patients=patients)
 
 @blue_print.route('/patients_search/', methods=['GET' ,  "POST"])
 def patients_search():

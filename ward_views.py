@@ -138,7 +138,7 @@ def all_ward_detail():
 	ward_query = session.query(Ward)
 	total_ward = ward_query.count()
 
-	wards = ward_query.limit(per_page).offset((page - 1) * per_page).all()
+	wards = ward_query.all()
 	# rendering the ward data to html page
 	return render_template('ward/ward_list.html',ward=wards,page=page, per_page=per_page, total_patients=total_ward)
     # return render_template('patient_list.html', patients=patients, page=page, per_page=per_page, total_patients=total_patients)

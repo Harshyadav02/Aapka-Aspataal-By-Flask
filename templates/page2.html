@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page 2</title>
+</head>
+<body>
+  <script>
+    // Listen for messages
+    window.addEventListener('message', function(event) {
+      // Check the origin of the message
+      if (event.origin !== window.location.origin) {
+        console.log("Received a message from an unexpected origin.");
+        return;
+      }
+
+      // Get the ID of the element from the message
+      const id = event.data.id;
+    
+      // Get the element with the ID
+      const element = document.getElementById(id);
+
+      // Do something with the element here
+      console.log(element ? element.textContent : "Element not found");
+    });
+  </script>
+</body>
+</html>

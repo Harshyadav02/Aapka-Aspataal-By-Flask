@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-
+{% extends 'admin_dash.html' %}
+{% block content %}
 <head>
     <title>Update Doctor Details</title>
     <link rel="stylesheet" href="{{url_for('static' , filename = 'patient.css')}} ">
@@ -13,7 +12,7 @@
     {% if doctor %}
     <form method="POST" action="/update_doctor/{{ doctor }}">
         
-        <h2>Editing the Doctor having Doctor id :{{doctor}}</h2>
+        <h2>Editing  Doctor id :{{doctor}}</h2>
         <label for="to_update">Select field to update:</label>
         <select name="to_update" id="to_update" required>
             <option value="">Choose field</option>
@@ -40,6 +39,4 @@
     </form>
     {% endif %}
 
-</body>
-
-</html>
+    {% endblock  %}

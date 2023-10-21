@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'admin_dash.html' %}
+{% block content %}
     <title>Update Medicine</title>
     <style>
         body {
@@ -43,8 +42,7 @@
             background-color: #0056b3;
         }
     </style>
-</head>
-<body>
+
     <div class="container">
         {% if medicine_id %}
         <h2>Update Medicine : {{medicine_id}}</h2>
@@ -77,5 +75,4 @@
         {%endif%}
         </form>
     </div>
-</body>
-</html>
+    {% endblock %}

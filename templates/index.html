@@ -57,29 +57,14 @@
         <!-- Use Bootstrap row and columns to display images in a horizontal layout -->
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="border p-3 text-center">
-                    <img src="{{ url_for('static', filename='images/admin.png') }}" class="img-fluid" alt="Admin Image">
+                <div class="border p-2 text-center">
+                    <img src="{{ url_for('static', filename='images/admin.png') }}" class="img-fluid" alt="Admin Image" style="height: 400px; width: 1400px;">
                     <a href="{{ url_for('auth.login') }}">
                         <button type="button" class="btn btn-primary my-2 px-4 py-2">Admin</button>
                     </a>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="border p-3 text-center">
-                    <img src="{{ url_for('static', filename='images/patient.jpg') }}" class="img-fluid" alt="Patient Image">
-                    <a href="{{ url_for('blue_print.patient_section') }}">
-                        <button type="button" class="btn btn-primary my-2 px-4 py-2">Patient</button>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="border p-3 text-center">
-                    <img src="{{ url_for('static', filename='images/doctor.png') }}" class="img-fluid" alt="Doctor Image" style="height: 317px;">
-                    <a href="{{ url_for('doctor_blueprint.doctor_section') }}">
-                        <button type="button" class="btn btn-primary my-2 px-4 py-2">Doctor</button>
-                    </a>
-                </div>
-            </div>
+            
         </div>
     </div>
 

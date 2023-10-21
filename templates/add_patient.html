@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Information Form</title>
-    <link rel="stylesheet" href="{{url_for('static' , filename = 'patient.css')}} ">
-</head>
-<body>
-    <h1>Patient Information Form</h1>
-    <form action="/add_patient/" method="POST">
+{% extends 'admin_dash.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='patient.css')}}">
+
+<h1>Patient Information Form</h1>
+<div class="scrollable-form">
+<form action="/add_patient/" method="POST">
         
         <label for="Patient_id">Patient ID:</label>
         <input type="text" id="Patient_id" name="Patient_id" required><br><br>
@@ -86,12 +83,20 @@
 
         <input type="submit" value="Submit" >
 
-        
-        {% for msg in get_flashed_messages()%}
+        {% for msg in get_flashed_messages() %}
         <div>
-            {{msg}}
+            {{ msg }}
         </div>
-    {%endfor%}
-    </form>
+    {% endfor %}
+</form>
+</div>
+{% endblock %}
 </body>
 </html>
+
+
+
+
+
+
+

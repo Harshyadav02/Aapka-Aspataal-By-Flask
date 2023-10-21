@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>doctor Information Form</title>
-    <link rel="stylesheet" href="{{url_for('static' , filename = 'patient.css')}} ">
-</head>
-<body>
+{% extends 'admin_dash.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='patient.css')}}">
+
+<div class="scrollable-form">
     <h1>Doctor Information Form</h1>
     <form action="/add_doctor/" method="POST">
  
@@ -42,7 +39,11 @@
                 </div>
             {%endfor%}
         
+            
     </form>
+    </div>
+    {% endblock %}
+    </body>
+    </html>
     
-</body>
-</html>
+    

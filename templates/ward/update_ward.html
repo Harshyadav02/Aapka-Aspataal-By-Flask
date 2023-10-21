@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-
+{% extends 'admin_dash.html' %}
+{% block content %}
 <head>
     <title>Update ward Details</title>
     <link rel="stylesheet" href="{{url_for('static' , filename = 'patient.css')}} ">
@@ -37,7 +36,7 @@
         {% endif %} {% endwith %}
     </form>
     {% endif %}
-
+    {% endblock  %}
 </body>
 
 </html>

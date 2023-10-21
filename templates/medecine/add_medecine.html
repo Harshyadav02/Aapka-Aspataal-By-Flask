@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Medicine Management</title>
-    <!-- Add your CSS stylesheets here -->
+{% extends 'admin_dash.html' %}
+
+{% block content %}
+
+<div class="scrollable-form">
     <style>
         /* Add your CSS styles here */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    
     margin: 0;
     padding: 0;
 }
@@ -66,7 +65,7 @@ input[type="submit"]:hover {
 
     <div class="container">
         <h2>Add Medicine</h2>
-        <form method="POST" action="{{ url_for('medecine_blue_print.add_medecine') }}">
+        <form method="POST" action="{{ url_for('medicine_blue_print.add_medecine') }}">
             <label for="medecine_id">Medicine ID:</label>
             <input type="text" name="medecine_id" required placeholder="MED001" maxlength="30"><br><br>
 
@@ -94,10 +93,9 @@ input[type="submit"]:hover {
                 {{msg}}
             </div>
         {%endfor%}
-        </form>
-    </div>
-
-
-
+      
+</form>
+</div>
+{% endblock %}
 </body>
 </html>

@@ -27,7 +27,7 @@ Base.prepare(engine, reflect=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-print(Base.classes)
+
 
 
 

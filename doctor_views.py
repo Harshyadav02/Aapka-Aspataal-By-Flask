@@ -101,7 +101,7 @@ def single_doctor():
 def all_doctor_detail():
 	
 	page = request.args.get('page', default=1, type=int)
-	per_page = 4
+	per_page = 10
 
 	# fetching the Doctor table
 	Doctor = Base.classes.Doctor
@@ -110,7 +110,7 @@ def all_doctor_detail():
 	doctor_query = session.query(Doctor)
 	total_doctor = doctor_query.count()
 
-	doctors = doctor_query.all()
+	doctors = doctor_query.limit(per_page).offset(((page-1) *per_page)).all()
 
 	session.close()
 

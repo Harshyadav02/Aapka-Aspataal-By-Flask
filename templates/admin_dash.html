@@ -80,17 +80,31 @@
             
             <div class="admin-section">
                 <img src="{{ url_for('static', filename='images/admin.png') }}" alt="Admin" class="admin-photo img-fluid">
-                <p class="admin-name">Admin: {{ user }}</p>
+                <p class="admin-name">{{ user }}</p>
                 <div class="button-container">
-                    <a href="#" class="cool-button" id="dashboard-link"> Dashboard</a>
-                    <a href="#" class="cool-button" id="patients-link"> Patients</a>
-                    <a href="#" class="cool-button" id="doctors-link"> Doctors</a>
-                    <a href="#" class="cool-button" id="medical-link"> Medical</a>
-                    <a href="#" class="cool-button" id="ward-link"> Ward</a>
+                    <a href="{{ url_for('blue_print.dashboard') }}" class="cool-button" id="dashboard-link"> Dashboard</a>
+                    <a href="{{url_for('blue_print.all_patient_detail')}}" class="cool-button" id="patients-link"> Patients</a>
+                    <a href="{{ url_for('doctor_blueprint.all_doctor_detail') }}" class="cool-button" id="doctors-link"> Doctors</a>
+                    <a href="{{ url_for('medicine_blue_print.all_medicine_detail') }}" class="cool-button" id="medical-link"> Medical</a>
+                    <a href="{{ url_for('ward_blueprint.all_ward_detail') }}" class="cool-button" id="ward-link"> Ward</a>
+                    <a href="#" class="cool-button" id="ward-link"> Nurse</a>
                 </div>
             </div>
             
             <div class="work-section">
+                <nav class="navbar navbar-expand-lg navbar-blue navbar-light p-lg-3" style="background-color: #007BFF;">
+                    <div class="container">
+                        
+                        <a class="navbar-brand  hospital" href="{{url_for('blue_print.dashboard')}}" style="color: white; font-size: 30px;">आपका अस्पताल</a>
+            
+                        
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-light" href="{{url_for('auth.logout')}}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
                 <div class="work-content" id="content-container">
                     {% block content %}{% endblock %}
                 </div>
@@ -102,44 +116,5 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
-    <script>
-        document.getElementById('dashboard-link').addEventListener('click', function() {
-            loadContent("{{ url_for('blue_print.dashboard') }}");
-        });
-
-       
-
-        // loadContent("{{ url_for('blue_print.dashboard') }}");
-       
-        document.getElementById('patients-link').addEventListener('click', function() {
-            // loadContent("{{ url_for('blue_print.patient_section') }}");
-            loadContent("{{ url_for('blue_print.all_patient_detail') }}");
-            
-        });
-    
-        document.getElementById('doctors-link').addEventListener('click', function() {
-            loadContent("{{ url_for('doctor_blueprint.all_doctor_detail') }}");
-        });
-    
-        document.getElementById('medical-link').addEventListener('click', function() {
-            loadContent("{{ url_for('medicine_blue_print.all_medicine_detail') }}");
-        });
-    
-        document.getElementById('ward-link').addEventListener('click', function() {
-            loadContent("{{ url_for('ward_blueprint.all_ward_detail') }}");
-        });
-        function loadContent(page) {
-            const contentContainer = document.getElementById("content-container");
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", page, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    contentContainer.innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        }
-    </script>
 </body>
 </html>

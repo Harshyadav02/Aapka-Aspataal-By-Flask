@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+{% extends 'admin_dash.html' %}
+{% block content %}
+   <title>Login Page</title>
     <style>
         body {
+            margin: 100px;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
@@ -14,13 +12,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            
         }
 
         h1 {
             font-size: 36px;
             color: #333;
             margin-bottom: 20px;
+            text-align: center;
+            
         }
 
         a {
@@ -31,15 +31,22 @@
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.3s;
+            
         }
 
         a:hover {
-            background-color: #0056b3;
+            background-color: #007bff;
+            color: aqua;
         }
+        
     </style>
 </head>
 <body>
-    <h1>You are not logged in, please log in.</h1>
-    <a href="{{ url_for('auth.login') }}">Login</a>
+    
+    <div id="pls_login">
+        <h1>You are not a valid user to see this content</h1>
+    <a href="{{ url_for('index') }}" >Login</a>
+    </div>
+{% endblock%}
 </body>
 </html>

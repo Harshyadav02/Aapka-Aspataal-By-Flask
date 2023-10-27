@@ -58,14 +58,42 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 mb-4">
                 <div class="border p-2 text-center">
-                    <img src="{{ url_for('static', filename='images/admin.png') }}" class="img-fluid" alt="Admin Image" style="height: 400px; width: 1400px;">
+                    <img src="{{ url_for('static', filename='images/admin.png') }}" class="img-fluid" alt="Admin Image" style="height: 300px; width: 500px;">
                     <a href="{{ url_for('auth.login') }}">
                         <button type="button" class="btn btn-primary my-2 px-4 py-2">Admin</button>
                     </a>
                 </div>
             </div>
             
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="border p-2 text-center">
+                    <img src="{{ url_for('static', filename='images/doctor.png') }}" class="img-fluid" alt="Admin Image" style="height: 300px; width: 500px;">
+                    <a href="{{ url_for('auth.doctor_login') }}">
+                        <button type="button" class="btn btn-primary my-2 px-4 py-2">डाक्साब</button>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="border p-2 text-center">
+                    <img src="{{ url_for('static', filename='images/Nurse.png') }}" class="img-fluid" alt="Admin Image" style="height: 300px; width: 500px;">
+                    <a href="{{ url_for('auth.nurse_login') }}">
+                        <button type="button" class="btn btn-primary my-2 px-4 py-2">Nurse</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="border p-2 text-center">
+                    <img src="{{ url_for('static', filename='images/Chemist.jpeg') }}" class="img-fluid" alt="Admin Image" style="height: 300px; width: 500px;">
+                    <a href="{{ url_for('auth.login') }}">
+                        <button type="button" class="btn btn-primary my-2 px-4 py-2">Chemist</button>
+                    </a>
+                </div>
+            </div>
+            
         </div>
+
+        
     </div>
 
 

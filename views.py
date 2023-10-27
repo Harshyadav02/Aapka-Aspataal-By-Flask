@@ -1,13 +1,12 @@
 from db import session , Base
 from flask import  render_template , Blueprint , request , render_template , flash ,redirect , url_for  
 from sqlalchemy.exc import IntegrityError
-from utils import login_required
+from utils import login_required , doctor_required
 import sqlalchemy
 from db import session
 
 from sqlalchemy import  text
 blue_print  = Blueprint('blue_print',__name__ )
-
 
 @blue_print.route('/patient_section/')
 @login_required
@@ -21,7 +20,7 @@ def index():
 	return render_template('index.html')
 
 @blue_print.route('/add_patient/' , methods=("POST" ,"GET"))
-@login_required
+@login_required 
 def add_patient():
 	
 	if request.method == 'POST':
@@ -86,112 +85,15 @@ def add_patient():
 	return render_template('add_patient.html')
 
 
-# @blue_print.route('/update_patient/' , methods=('POST' ,'GET'))
-# @login_required
-# def update_patient():
-
-# 	if request.method == 'POST':
-
-# 		patient_id = request.form['patient_id']
-# 		to_update = request.form['to_update']
-# 		updated_value = request.form['update_value']
-# 		error = None
-		
-# 		if not patient_id:
-# 			error = "Enter patient id"
-		
-# 		if to_update is None :
-# 			error = 'Enter the column name to update'
-		
-# 		if updated_value is None:
-# 			error = 'Enter the new value for updation'
-
-# 		if error is None:
-
-# 			try: 
-# 				# checking if the column exist in table Patient
-# 				if hasattr(Base.classes.Patient, to_update):
-# 					patient = session.query(Base.classes.Patient).filter_by(Patient_id=patient_id).first()
-					
-# 					if patient is None :
-# 						error = 'Patient not found'
-					
-# 					if patient :
-
-# 						# updating the patient value
-# 						setattr(patient, to_update, updated_value)
-# 						session.commit()	
-# 						return render_template('success.html')
-# 					else:
-# 						error = 'User not found'
-
-
-# 			except :
-# 				error = 'Something went wrong try again'
-# 			finally:
-# 				session.commit()
-# 		flash(error)
-# 	return render_template('update_patient.html')
-
-
-
-# @blue_print.route('/delete_patient/' ,methods=('POST' ,'GET'))
-# @login_required
-# def delete_patient():
-
-
-
-# 	if request.method == 'POST':
-
-# 		patient_id = request.form['patient_id']
-		
-# 		error = None
-# 		if not patient_id:
-
-# 			error = 'Enter patient Id'
-		
-# 		if error is  None:
-# 			try:
-# 				patient = session.query(Base.classes.Patient).filter_by(Patient_id=patient_id).first()
-# 				if patient is not None:
-# 					session.delete(patient)
-# 					session.commit()
-# 					return render_template('success.html')
-# 				else:
-# 					error = 'Patient Not Found'
-# 			except Exception :
-
-# 				error = 'Something went wrong try again'
-# 		flash(error)
-# 	return render_template('delete_patient.html')		
-
-# @blue_print.route('/single_patient/', methods=('POST', 'GET'))
-# @login_required
-# def single_patient():
-	
-#     patient_id = request.form.get('patient_id')
-	
-#     if request.method == 'POST':
-#         if not patient_id:
-#             flash('Please enter a patient ID.')
-#         else:
-#             patient = session.query(Base.classes.Patient).filter_by(Patient_id=patient_id).first()
-#             if patient is not None:
-#                 return render_template('single_patient.html', patient=patient)
-#             else:
-#                 flash('Patient not found.')
-
-#     return render_template('single_patient.html')
 
 def search_patient(user):
 	user = session.query()
 
 @blue_print.route('/all_patients_detail/')
 @login_required
-
 def all_patient_detail():
-    # page = request.args.get('page', default=1, type=int)
-    # per_page = 4
+    page = request.args.get('page', default=1, type=int)
+    per_page = 10
 	
     Patient = Base.classes.Patient  # Get the mapped Patient class
 
@@ -202,11 +104,11 @@ def all_patient_detail():
     total_patients = patients_query.count()
 
 	# limiting the number of patients per page  and the offset is used to skip the data 
-    patients = patients_query.all()
+    patients = patients_query.limit(per_page).offset((page-1)*per_page).all()
 	# patients=patients, page=page, per_page=per_page
     session.close()
 
-    return render_template('patient_list.html',  total_patients=total_patients , patients=patients)
+    return render_template('patient_list.html',  total_patients=total_patients , patients=patients , page=page, per_page=per_page)
 
 @blue_print.route('/patients_search/', methods=['GET' ,  "POST"])
 def patients_search():
@@ -244,14 +146,14 @@ def update_patient(patient_id):
 		to_update = request.form['to_update']
 		updated_value = request.form['update_value']
 		error = None
-		print(patient_id)
+		
 
 		if to_update is None :
 			error = 'Enter the column name to update'
-		print(to_update)
+		
 		if updated_value is None:
 			error = 'Enter the new value for updation'
-		print(updated_value)
+		
 		if error is None:
 		
 			try: 
@@ -303,5 +205,4 @@ def dashboard():
 	ward_count  = ward_list.count()
 
 	return render_template('dashboard.html' , doctor = doctor_count , patient = patient_count , ward= ward_count , male_doctor=male_doctor , female_doctor = female_doctor , male_patient = male_patient , female_patient= female_patient)
-
 

@@ -1,7 +1,7 @@
 from flask import Blueprint , render_template ,flash  , request
 from db import Base , session
 from sqlalchemy.exc import IntegrityError
-from utils import login_required
+from utils import login_required , doctor_required , nurse_admin_required
 ward_blueprint = Blueprint('ward_blueprint' , __name__)
 
 
@@ -49,6 +49,7 @@ def add_ward():
     
 @ward_blueprint.route('/update_ward/<ward_id>',methods=['GET' ,'POST'])
 @login_required
+
 def update_ward(ward_id):
 
 	if request.method == 'POST':
@@ -129,16 +130,27 @@ def single_ward():
 
 
 @ward_blueprint.route("/all_ward_detail/")
+@nurse_admin_required
 def all_ward_detail():
 
 	page = request.args.get('page' , default=1 ,type=int)
-	per_page = 4 
+	per_page = 10 
 
 	Ward = Base.classes.Ward 
 	ward_query = session.query(Ward)
 	total_ward = ward_query.count()
+ 
+	# retriving all the data from db
+  
 
-	wards = ward_query.all()
+	# taotal number of patient
+ 
+
+	# limiting the number of patients per page  and the offset is used to skip the data 
+	wards = ward_query.limit(per_page).offset((page-1)*per_page).all()
+	
+	
 	# rendering the ward data to html page
 	return render_template('ward/ward_list.html',ward=wards,page=page, per_page=per_page, total_patients=total_ward)
-    # return render_template('patient_list.html', patients=patients, page=page, per_page=per_page, total_patients=total_patients)
+
+

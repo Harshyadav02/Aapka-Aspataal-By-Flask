@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from models import Admin, Base
+from models import  Base
 from auth import auth_blue_print 
 from doctor_views import doctor_blueprint
 from medicine_views import medicine_blue_print
@@ -8,7 +8,6 @@ from bill_views import bill_blueprint
 from ward_views import ward_blueprint
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-
 
 
 def create_app():
@@ -34,9 +33,11 @@ def create_app():
     app.register_blueprint(bill_blueprint)
     app.register_blueprint(ward_blueprint)
 
+    
 
     return app
 
 if __name__ == '__main__':
     app = create_app()
+   
     app.run(host='0.0.0.0', port=5000, debug=True)

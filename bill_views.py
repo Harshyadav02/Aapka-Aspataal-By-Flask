@@ -5,6 +5,7 @@ from utils import login_required
 
 bill_blueprint = Blueprint('bill_blueprint', __name__)
 
+
 @bill_blueprint.route('/bill_section/')
 @login_required
 def bill_section():

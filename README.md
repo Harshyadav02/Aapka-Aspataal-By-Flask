@@ -3,7 +3,7 @@
 
 ## 1. Introduction
 
-Aapka Aspatal is a Hospital Management System. This system performs some basic opertions like:- 
+Aapka Aspatal is a Hospital Management System. This system performs some basic opertions like: 
 
     1. Add Patient 
     2. Delete Patient 
@@ -15,7 +15,7 @@ There are also key feature like **authencation** and **authorization** in the ap
 
 ## 2. Technology
 
-The technology used in this project :-
+The technology used in this project:
 #### 2.1 Frontend   
 - HTML
 - CSS
@@ -26,8 +26,13 @@ The technology used in this project :-
 - Flask
 - SQLAlchemy
 
-## 4
-## 3. Installation 
+## 3. Prerequisites
+
+Before the installation of application you must have following dependencies installed on your system:
+
+- Python(3.x)
+- Git
+## 4. Installation 
 
 Simply clone the git repository to your desired location by the below command.
 
@@ -40,15 +45,15 @@ Run the following command for installation of all the packages and libaries requ
 
     pip install -r requirement.txt  
 
-## 4.  Runing the Application 
+## 5. Runing the Application 
 
-To run the application just run the init.py file by
+To run the application just run the init.py file by:
 
     flask --app init.py run
 
 This will start the Flask development server, and you can access the Aapka Aspatal application in your web browser at http://localhost:5000.
 
-## 5. Project Structure 
+## 6. Project Structure 
 
 Here's an overview of the application directory structure:
 
@@ -65,11 +70,3 @@ Here's an overview of the application directory structure:
 ##### Directory 
 - `templates` : This directory contain all the HTML files.
 - `static` : This directory contain CSS, JavaScript and images file.
-
-
-
-
-
-
-
-

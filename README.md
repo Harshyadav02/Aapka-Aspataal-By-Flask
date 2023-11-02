@@ -3,15 +3,15 @@
 
 ## 1. Introduction
 
-Aapka Aspatal is a Hospital Management System. This system performs some basic opertions like 
+Aapka Aspatal is a Hospital Management System. This system performs some basic opertions like:- 
 
     1. Add Patient 
     2. Delete Patient 
     3. Update Patient
     4. Add Doctor 
-    5. Update Doctor  and many more ...  
+    5. Update Doctor and many more ...  
 
-There are also  key feature like **authencation**  and **autherization**  in the application.
+There are also key feature like **authencation** and **authorization** in the application.
 
 ## 2. Technology
 
@@ -26,17 +26,17 @@ The technology used in this project :-
 - Flask
 - SQLAlchemy
 
-
+## 4
 ## 3. Installation 
 
 Simply clone the git repository to your desired location by the below command.
 
     git clone https://github.com/Harshyadav02/Aapaka-Aspataal 
 
-Now navigate to the **Aapaka-Aspataal** directory  by
+Now navigate to the **Aapaka-Aspataal** directory by
 
     cd Apaka-Aspataal 
-Run the following command for installation of all  the packages and libaries required for the project.
+Run the following command for installation of all the packages and libaries required for the project.
 
     pip install -r requirement.txt  
 
@@ -50,21 +50,21 @@ This will start the Flask development server, and you can access the Aapka Aspat
 
 ## 5. Project Structure 
 
-Here's an overview of the project's directory structure:
+Here's an overview of the application directory structure:
 
-- init.py : The main file of the project 
-- auth.py : file which contain **authorization** and **authentication** 
-- view.py : This file contain Patient related views
-- Doctor_views.py : This file contain Doctor related views 
-- Medicine_views.py : This file contain Medicine related views
-- ward_views.py : This file contain ward related views
-- Bill_views.py : This file contain Bill related views
-- db.py : This file contain database related confrigation for the project 
-- models.py : This file contain models
-
+- `init.py` : The main file of the project. 
+- `auth.py` : file which contain **authorization** and **authentication**.  
+- `view.py` : This file contain Patient related views. 
+- `doctor_views.py` : This file contain Doctor related views.  
+- `medicine_views.py` : This file contain Medicine related views. 
+- `ward_views.py` : This file contain ward related views. 
+- `bill_views.py` : This file contain Bill related views. 
+- `db.py` : This file contain database related confrigation for the project.   
+- `models.py` : This file contain models.
+  
 ##### Directory 
-- Templates : This directory contain all the HTML files
-- static : This directory contain CSS, IMAGES and JavaScript file
+- `templates` : This directory contain all the HTML files.
+- `static` : This directory contain CSS, JavaScript and images file.
 
 
 

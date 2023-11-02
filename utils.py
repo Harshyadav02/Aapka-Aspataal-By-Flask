@@ -32,6 +32,7 @@ def nurse_admin_required(view_func):
     
     return check_nurse_admin
 
+
 def medical_admin_required(view_func):
 
     @wraps(view_func)

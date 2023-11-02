@@ -3,9 +3,8 @@ from flask import Blueprint , render_template , request , flash
 from sqlalchemy.exc import IntegrityError
 from utils import login_required
 
+# creating blueprint for doctor
 doctor_blueprint = Blueprint('doctor_blueprint', __name__)
-
-
 
 @doctor_blueprint.route('/doctor_section/')
 @login_required
@@ -13,7 +12,7 @@ def doctor_section():
 
     return render_template('doctor/doctor.html')
 
-
+# function for adding doctor 
 @doctor_blueprint.route('/add_doctor/' , methods=("POST" ,"GET"))
 @login_required
 def add_doctor():
@@ -58,7 +57,7 @@ def add_doctor():
 		
 	return render_template('doctor/add_doctor.html')
 
-
+# function for deleting function
 @doctor_blueprint.route('/delete_doctor/<int:doctor_id>')
 @login_required
 def delete_doctor(doctor_id):
@@ -74,7 +73,7 @@ def delete_doctor(doctor_id):
 
 
 
-
+# function for doctor detail
 @doctor_blueprint.route('/single_doctor/', methods=('POST', 'GET'))
 @login_required
 def single_doctor():
@@ -117,6 +116,7 @@ def all_doctor_detail():
 	# rendering the Patient data to html page
 	return render_template('doctor/doctor_list.html', doctors=doctors, page=page, per_page=per_page, total_doctor=total_doctor)
 
+# function for updating the doctor
 @doctor_blueprint.route('/update_doctor/<int:doctor_id>' , methods=['POST' ,'GET'])
 @login_required
 def update_doctor(doctor_id):

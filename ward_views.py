@@ -1,20 +1,20 @@
 from flask import Blueprint , render_template ,flash  , request
 from db import Base , session
 from sqlalchemy.exc import IntegrityError
-from utils import login_required , doctor_required , nurse_admin_required
+from utils import requires_role 
 ward_blueprint = Blueprint('ward_blueprint' , __name__)
 
 
 
 @ward_blueprint.route('/ward_section/')
-@login_required
+@requires_role(['Admin'])
 def ward_section():
 	return render_template('ward/ward.html')
 
 
 
 @ward_blueprint.route('/add_ward/' ,methods=['GET' ,'POST'])
-@login_required
+@requires_role(['Admin'])
 def add_ward():
     if request.method == 'POST':
         Ward_id = request.form['Ward_id']
@@ -48,7 +48,7 @@ def add_ward():
     return render_template('ward/add_ward.html')
     
 @ward_blueprint.route('/update_ward/<ward_id>',methods=['GET' ,'POST'])
-@login_required
+@requires_role(['Admin'])
 
 def update_ward(ward_id):
 
@@ -90,7 +90,7 @@ def update_ward(ward_id):
 
      
 @ward_blueprint.route('/delete_ward/<ward_id>')
-@login_required
+@requires_role(['Admin'])
 def delete_ward(ward_id):
 
 
@@ -111,7 +111,7 @@ def delete_ward(ward_id):
 
 
 @ward_blueprint.route('/single_ward/' , methods=['GET' ,'POST'])
-@login_required
+@requires_role(['Admin'])
 def single_ward():
 
     if request.method == 'POST':
@@ -130,7 +130,7 @@ def single_ward():
 
 
 @ward_blueprint.route("/all_ward_detail/")
-@nurse_admin_required
+
 def all_ward_detail():
 
 	page = request.args.get('page' , default=1 ,type=int)

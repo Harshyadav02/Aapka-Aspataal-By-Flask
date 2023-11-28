@@ -3,7 +3,7 @@ from models import  Base
 from auth import auth_blue_print 
 from doctor_views import doctor_blueprint
 from medicine_views import medicine_blue_print
-from views import blue_print
+from patient_views import blue_print
 from bill_views import bill_blueprint
 from ward_views import ward_blueprint
 from sqlalchemy.orm import sessionmaker

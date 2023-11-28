@@ -86,7 +86,33 @@ tbody td {
         overflow: auto;
         display: none;
     }
-    
+    @media (max-width: 768px) {
+        table {
+            font-size: 14px; /* Reduce font size for smaller screens */
+        }
+        th, td {
+            padding: 6px; /* Reduce padding for table cells on smaller screens */
+        }
+        #add-patient {
+            margin-left: 10px; /* Adjust the position of the "Add Patient" button */
+        }
+    }
+
+    /* Media query for screens smaller than 576px (mobile devices) */
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 24px; /* Reduce header font size for mobile devices */
+        }
+        table {
+            font-size: 12px; /* Further reduce font size for smaller screens */
+        }
+        th, td {
+            padding: 4px; /* Further reduce padding for table cells on smaller screens */
+        }
+        #add-patient {
+            margin-left: 5px; /* Further adjust the position of the "Add Patient" button */
+        }
+    }
     </style>
 </head>
 <body>

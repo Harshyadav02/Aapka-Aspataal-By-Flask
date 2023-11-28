@@ -6,10 +6,16 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
-      
-      
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
         .admin-section {
-            width: 20%;
+            width: 100%;
             background-color: #007bff;
             color: white;
             padding: 20px;
@@ -41,7 +47,7 @@
         }
 
         .work-section {
-            width: 80%;
+            width: 100%;
             padding: 20px;
         }
 
@@ -51,70 +57,68 @@
             border-radius: 10px;
             min-height: 100vh;
         }
+
         .cool-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #007BFF;
-        color: #fff;
-        border: none;
-        /* border-radius: 5px; */
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-    .cool-button:hover {
-        background-color: #b4c7db;
-        color: black;
-        border-radius: 55px;
-        transition: 0.5s;
-    }
+        .cool-button:hover {
+            background-color: #b4c7db;
+            color: black;
+            transition: 0.5s;
+        }
 
+        @media (min-width: 992px) {
+            .admin-section {
+                width: 20%;
+                min-height: 100vh;
+            }
+            .work-section {
+                width: 80%;
+            }
+        }
     </style>
-    
 </head>
 <body>
-    <div class="container-fluid">
-        
-        <div class="row">
-            
-            <div class="admin-section">
-                <img src="{{ url_for('static', filename='images/admin.png') }}" alt="Admin" class="admin-photo img-fluid">
-                <p class="admin-name">{{ user }}</p>
-                <div class="button-container">
-                    <a href="{{ url_for('blue_print.dashboard') }}" class="cool-button" id="dashboard-link"> Dashboard</a>
-                    <a href="{{url_for('blue_print.all_patient_detail')}}" class="cool-button" id="patients-link"> Patients</a>
-                    <a href="{{ url_for('doctor_blueprint.all_doctor_detail') }}" class="cool-button" id="doctors-link"> Doctors</a>
-                    <a href="{{ url_for('medicine_blue_print.all_medicine_detail') }}" class="cool-button" id="medical-link"> Medical</a>
-                    <a href="{{ url_for('ward_blueprint.all_ward_detail') }}" class="cool-button" id="ward-link"> Ward</a>
-                    <a href="#" class="cool-button" id="ward-link"> Nurse</a>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="admin-section">
+            <img src="{{ url_for('static', filename='images/admin.png') }}" alt="Admin" class="admin-photo img-fluid">
+            <p class="admin-name">{{ user }}</p>
+            <div class="button-container">
+                <a href="{{ url_for('blue_print.dashboard') }}" class="cool-button" id="dashboard-link"> Dashboard</a>
+                <a href="{{ url_for('blue_print.all_patient_detail') }}" class="cool-button" id="patients-link"> Patients</a>
+                <a href="{{ url_for('doctor_blueprint.all_doctor_detail') }}" class="cool-button" id="doctors-link"> Doctors</a>
+                <a href="{{ url_for('medicine_blue_print.all_medicine_detail') }}" class="cool-button" id="medical-link"> Medical</a>
+                <a href="{{ url_for('ward_blueprint.all_ward_detail') }}" class="cool-button" id="ward-link"> Ward</a>
+                <a href="#" class="cool-button" id="ward-link"> Nurse</a>
             </div>
-            
-            <div class="work-section">
-                <nav class="navbar navbar-expand-lg navbar-blue navbar-light p-lg-3" style="background-color: #007BFF;">
-                    <div class="container">
-                        
-                        <a class="navbar-brand  hospital" href="{{url_for('blue_print.dashboard')}}" style="color: white; font-size: 30px;">आपका अस्पताल</a>
-            
-                        
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-light" href="{{url_for('auth.logout')}}">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="work-content" id="content-container">
-                    {% block content %}{% endblock %}
-                </div>
-            </div>
-            
         </div>
-        
-        
+        <div class="work-section">
+            <nav class="navbar navbar-expand-lg navbar-blue navbar-light p-lg-3" style="background-color: #007BFF;">
+                <div class="container">
+                    <a class="navbar-brand hospital" href="{{ url_for('blue_print.dashboard') }}" style="color: white; font-size: 30px;">आपका अस्पताल</a>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-light" href="{{ url_for('auth.logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="work-content" id="content-container">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

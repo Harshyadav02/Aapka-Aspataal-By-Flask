@@ -1,7 +1,7 @@
 from db import session , Base
 from flask import  render_template , Blueprint , request , render_template , flash ,redirect , url_for  
 from sqlalchemy.exc import IntegrityError
-from utils import login_required , doctor_required
+from utils import  requires_role
 import sqlalchemy
 from db import session
 
@@ -9,18 +9,18 @@ from sqlalchemy import  text
 blue_print  = Blueprint('blue_print',__name__ )
 
 @blue_print.route('/patient_section/')
-@login_required
+@requires_role(['Admin'])
 def patient_section():
 	return render_template('patient.html')
 
 
 @blue_print.route('/main_page/')
-@login_required
+@requires_role(['Admin'])
 def index():
 	return render_template('index.html')
 
 @blue_print.route('/add_patient/' , methods=("POST" ,"GET"))
-@login_required 
+@requires_role(['Admin','nurse'])
 def add_patient():
 	
 	if request.method == 'POST':
@@ -90,7 +90,7 @@ def search_patient(user):
 	user = session.query()
 
 @blue_print.route('/all_patients_detail/')
-@login_required
+@requires_role(['Admin'])
 def all_patient_detail():
     page = request.args.get('page', default=1, type=int)
     per_page = 10
@@ -137,7 +137,7 @@ def delete_patient(patient_id):
 
 
 @blue_print.route('/update_patient/<int:patient_id>' , methods=('POST' ,'GET'))
-@login_required
+@requires_role(['Admin'])
 def update_patient(patient_id):
 	patient_id = patient_id
 

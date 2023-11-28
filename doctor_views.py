@@ -1,20 +1,20 @@
 from db import Base , session
 from flask import Blueprint , render_template , request , flash
 from sqlalchemy.exc import IntegrityError
-from utils import login_required
+from utils import requires_role
 
 # creating blueprint for doctor
 doctor_blueprint = Blueprint('doctor_blueprint', __name__)
 
 @doctor_blueprint.route('/doctor_section/')
-@login_required
+@requires_role(['Admin'])
 def doctor_section():
 
     return render_template('doctor/doctor.html')
 
 # function for adding doctor 
 @doctor_blueprint.route('/add_doctor/' , methods=("POST" ,"GET"))
-@login_required
+@requires_role(['Admin'])
 def add_doctor():
 	
 	if request.method == 'POST':
@@ -59,7 +59,7 @@ def add_doctor():
 
 # function for deleting function
 @doctor_blueprint.route('/delete_doctor/<int:doctor_id>')
-@login_required
+@requires_role(['Admin'])
 def delete_doctor(doctor_id):
 
 		doctor = session.query(Base.classes.Doctor).filter_by(Doctor_id=doctor_id).first()
@@ -75,7 +75,7 @@ def delete_doctor(doctor_id):
 
 # function for doctor detail
 @doctor_blueprint.route('/single_doctor/', methods=('POST', 'GET'))
-@login_required
+@requires_role(['Admin'])
 def single_doctor():
 	
     doctor_id = request.form.get('doctor_id')
@@ -96,7 +96,7 @@ def single_doctor():
     return render_template('doctor/single_doctor.html')
 
 @doctor_blueprint.route("/all_doctor_detail/")
-@login_required
+@requires_role(['Admin'])
 def all_doctor_detail():
 	
 	page = request.args.get('page', default=1, type=int)
@@ -118,7 +118,7 @@ def all_doctor_detail():
 
 # function for updating the doctor
 @doctor_blueprint.route('/update_doctor/<int:doctor_id>' , methods=['POST' ,'GET'])
-@login_required
+@requires_role(['Admin'])
 def update_doctor(doctor_id):
 	if request.method == 'POST':
 

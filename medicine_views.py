@@ -1,19 +1,19 @@
 from db import Base , session
 from flask import Blueprint , render_template , request , flash
 from sqlalchemy.exc import IntegrityError
-from utils import login_required
+from utils import requires_role
 
 medicine_blue_print = Blueprint('medicine_blue_print', __name__)
 
 @medicine_blue_print.route('/medecine_section/')
-@login_required
+@requires_role(['Admin'])
 def medecine_section():
 
     return render_template('medecine/medecine.html')
 
 # function for adding the medicine
 @medicine_blue_print.route('/add_medecine/' , methods=("POST" ,"GET"))
-@login_required
+@requires_role(['Admin'])
 def add_medecine():
 	
 	if request.method == 'POST':
@@ -60,7 +60,7 @@ def add_medecine():
 
 
 @medicine_blue_print.route('/delete_medecine/<medicine_id>')
-@login_required
+@requires_role(['Admin'])
 def delete_medecine(medicine_id):
 
 	error = None 
@@ -79,7 +79,7 @@ def delete_medecine(medicine_id):
 
 
 @medicine_blue_print.route("/all_medicine_detail/")
-@login_required
+@requires_role(['Admin'])
 def all_medicine_detail():
 	page = request.args.get('page', default=1, type=int)
 	per_page = 10
@@ -98,7 +98,7 @@ def all_medicine_detail():
 	return render_template('medecine/medicine_list.html', medicines=medicine ,  total_medicine=total_medicine , page=page, per_page=per_page)
 
 @medicine_blue_print.route('/update_medecine/<medicine_id>' , methods=['POST' ,'GET'])
-@login_required
+@requires_role(['Admin'])
 def update_medecine(medicine_id):
 
 	if (request.method == 'POST'):

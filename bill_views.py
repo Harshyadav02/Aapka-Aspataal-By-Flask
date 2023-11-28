@@ -1,17 +1,17 @@
 from flask import Blueprint, render_template, flash, request, redirect, url_for
 from db import Base, session
 from sqlalchemy.exc import IntegrityError
-from utils import login_required
+from utils import requires_role
 
 bill_blueprint = Blueprint('bill_blueprint', __name__)
 
 @bill_blueprint.route('/bill_section/')
-@login_required
+@requires_role(['Admin'])
 def bill_section():
 	return render_template('bill/bill.html')
 
 @bill_blueprint.route('/add_bill/', methods=("POST", "GET"))
-@login_required
+@requires_role(['Admin'])
 def add_bill():
 
     if request.method == 'POST':
@@ -64,7 +64,7 @@ def add_bill():
 
 # Route for updating a bill
 @bill_blueprint.route('/update_bill/', methods=['GET', 'POST'])
-@login_required
+@requires_role(['Admin'])
 def update_bill():
     if request.method == 'POST':
         bill_id = request.form['bill_id']
@@ -104,7 +104,7 @@ def update_bill():
 
 # Route for deleting a bill
 @bill_blueprint.route('/delete_bill/', methods=['GET', 'POST'])
-@login_required
+@requires_role(['Admin'])
 def delete_bill():
     if request.method == 'POST':
         bill_id = request.form['bill_id']
@@ -131,7 +131,7 @@ def delete_bill():
 
 # Route for viewing a single bill
 @bill_blueprint.route('/single_bill/', methods=['GET', 'POST'])
-@login_required
+@requires_role(['Admin'])
 def single_bill():
     if request.method == 'POST':
         bill_id = request.form['bill_id']

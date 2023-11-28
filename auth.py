@@ -69,7 +69,7 @@ def login():
 
         if error is None:
             # adding user to flask sesssion
-            flask_session['username'] = user.username
+            flask_session['role'] = 'Admin'
             return redirect(url_for('blue_print.dashboard' , user= username))
 
         flash(error)
@@ -152,8 +152,8 @@ def nurse_login():
         elif not check_password_hash(nurse.Password, password):
             flash('Invalid password')
         else:
-            flask_session['Nurse_id'] = nurse.username  # Use 'Nurse_id' for session key
-            print(flask_session.keys())
+            flask_session['role'] = 'nurse'  # Use 'Nurse_id' for session key
+            print(type(flask_session))
             return redirect(url_for('blue_print.dashboard', user=username))
     return render_template('auth/Nurse_login.html')
 

@@ -1,8 +1,3 @@
-CREATE DATABASE HOSPITAL;
-
-USE HOSPITAL;
-
-
 CREATE TABLE Doctor_Speciality (
     Specialty_id VARCHAR(10) PRIMARY KEY,
     Specialty_name VARCHAR(100)

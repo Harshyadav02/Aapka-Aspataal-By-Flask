@@ -5,6 +5,7 @@ from utils import requires_role
 
 bill_blueprint = Blueprint('bill_blueprint', __name__)
 
+
 @bill_blueprint.route('/bill_section/')
 @requires_role(['Admin'])
 def bill_section():

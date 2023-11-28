@@ -5,7 +5,6 @@ from utils import login_required , doctor_required , nurse_admin_required
 ward_blueprint = Blueprint('ward_blueprint' , __name__)
 
 
-
 @ward_blueprint.route('/ward_section/')
 @login_required
 def ward_section():

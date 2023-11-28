@@ -27,7 +27,6 @@ def register():
 		elif not password:
 			error = 'Password is required.'
 
-
 		if error is None:
 			try:
 
@@ -59,7 +58,7 @@ def login():
         password = request.form['password']
         error = None
 
-		#  fetching the username from Admin table
+	#  fetching the username from Admin table
         user = session.query(Admin).filter_by(username=username).first()
 
         if user is None:
@@ -91,6 +90,7 @@ def admin_dashboard(user):
 
 @auth_blue_print.route('/logout/')
 def logout():
+    # Removing all the logined user form the session	
     flask_session.pop('username', None) 
     flask_session.pop('Doctor_id', None)
     flask_session.pop('Nurse_id', None)   

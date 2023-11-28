@@ -11,7 +11,7 @@ def medecine_section():
 
     return render_template('medecine/medecine.html')
 
-
+# function for adding the medicine
 @medicine_blue_print.route('/add_medecine/' , methods=("POST" ,"GET"))
 @requires_role(['Admin'])
 def add_medecine():

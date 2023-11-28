@@ -9,7 +9,7 @@ from ward_views import ward_blueprint
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
-
+# Function that have all the mapping of the other files
 def create_app():
     app = Flask(__name__ ,static_folder="static")
 
@@ -20,7 +20,7 @@ def create_app():
     Session = sessionmaker(bind=engine)
     ss = Session()
   
-
+# First page to the be rendered 
     @app.route("/")
     def index():
         return render_template('index.html')

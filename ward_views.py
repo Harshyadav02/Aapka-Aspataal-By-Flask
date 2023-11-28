@@ -5,7 +5,6 @@ from utils import requires_role
 ward_blueprint = Blueprint('ward_blueprint' , __name__)
 
 
-
 @ward_blueprint.route('/ward_section/')
 @requires_role(['Admin'])
 def ward_section():

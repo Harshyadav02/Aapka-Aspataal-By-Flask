@@ -2,15 +2,16 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
-
+# making object of declartive_base
 Base = declarative_base()
 
+# Admin class
 class Admin(Base,UserMixin):
     __tablename__ = 'Admin' 
     
     username = Column(String(20), primary_key=True)
     password = Column(String(255))
-
+# Nurse class
 class Nurse(Base , UserMixin):
     __tablename__ = 'Nurse'
 

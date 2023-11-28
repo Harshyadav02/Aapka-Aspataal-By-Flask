@@ -41,11 +41,21 @@ Simply clone the git repository to your desired location by the below command.
 Now navigate to the **Aapaka-Aspataal** directory by
 
     cd Apaka-Aspataal 
-Run the following command for installation of all the packages and libaries required for the project.
+Run the following command for installation of all the packages and libaries required for the project. Make sure you have activated virtual environment.
 
     pip install -r requirement.txt  
 
-## 5. Runing the Application 
+## 5. Importing the .sql file to our database.
+
+Login to your mysql server. Create a new database name it `HOSPITAL`. Now run the following command
+
+    source /path/to/Aapaka-Aspataal/BILLING.sql
+
+## 6. Changing the credentials.
+
+Open `init.py` and `db.py`  and change your `username` and `password` to your actual username and password.
+
+## 7. Runing the Application 
 
 To run the application just run the init.py file by:
 
@@ -53,7 +63,7 @@ To run the application just run the init.py file by:
 
 This will start the Flask development server, and you can access the Aapka Aspatal application in your web browser at http://localhost:5000.
 
-## 6. Project Structure 
+## 8. Project Structure 
 
 Here's an overview of the application directory structure:
 

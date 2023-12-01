@@ -36,11 +36,11 @@ Before the installation of application you must have following dependencies inst
 
 Simply clone the git repository to your desired location by the below command.
 
-    git clone https://github.com/Harshyadav02/Aapaka-Aspataal 
+    git clone https://github.com/Harshyadav02/Aapka-Aspataal 
 
 Now navigate to the **Aapaka-Aspataal** directory by
 
-    cd Apaka-Aspataal 
+    cd Aapka-Aspataal 
 Run the following command for installation of all the packages and libaries required for the project. Make sure you have activated virtual environment.
 
     pip install -r requirement.txt  

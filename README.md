@@ -41,7 +41,7 @@ Simply clone the git repository to your desired location by the below command.
 Now navigate to the **Aapaka-Aspataal** directory by
 
     cd Aapka-Aspataal 
-Run the following command for installation of all the packages and libaries required for the project. Make sure you have activated virtual environment.
+Run the following command for installation of all the packages and libraries required for the project. Make sure you have activated the [virtual environment](https://docs.python.org/3/library/venv.html).
 
     pip install -r requirement.txt  
 

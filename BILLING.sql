@@ -9,7 +9,8 @@ CREATE TABLE Doctor (
     First_name varchar(30) NOT NULL,
     Last_name  varchar(30) NOT NULL,
     Gender     varchar(10) NOT NULL,
-    contact    varchar(20) NOT NULL, 
+    contact    varchar(20) NOT NULL,
+    Password   varchar(255) ,
     Doctor_Charge int unsigned NOT NULL, 
     Specialty_id VARCHAR(10),
     FOREIGN KEY (Specialty_id) REFERENCES Doctor_Speciality(Specialty_id) 
